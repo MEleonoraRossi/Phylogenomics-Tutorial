@@ -40,7 +40,12 @@ Let's have a look on what's inside by typing the command `ls` or `ll`
 ## Concatenate the alignments
 
 By this point you should have performed all the steps necessary to remove paralogs, low quality sequences or species, and be pretty confident that the genes you have selected are trusty orthologs. 
-You should now have the genes ready to be concatenated in a super matrix. There are many tools that you can use for this step (e.g [concat_fasta.pl](https://github.com/santiagosnchez/concat_fasta) or [catsequences](https://github.com/ChrisCreevey/catsequences), here we are going to use `FASTCONCAT`.
+You should now have the genes ready to be concatenated in a super matrix. There are many tools that you can use for this step (e.g [concat_fasta.pl](https://github.com/santiagosnchez/concat_fasta) or [catsequences](https://github.com/ChrisCreevey/catsequences)), here we are going to use [FASTCONCAT](https://github.com/PatrickKueck/FASconCAT-G), it will read any format you have for your genes (e.g. Fasta, Phylip, Nexus)
+
+
+```sh
+perl /software/FASconCAT-G_v1.04.pl -l -s
+```
 
 ## Tree inference : Maximum likelihood
 
