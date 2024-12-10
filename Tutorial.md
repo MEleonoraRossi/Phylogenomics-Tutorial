@@ -60,7 +60,8 @@ less -S OG0000006.fa
 ```
 
 
-## EXTRA: Pre-alignment uality filtering
+## EXTRA: Pre-alignment and quality filtering
+
 
 ## Multiple sequence alignment
 The next step is to infer multiple sequence alignments. Multiple sequence alignments allow us to know which amino acids/ nucleotides are homologous. A simple yet accurate tool is MAFFT.
