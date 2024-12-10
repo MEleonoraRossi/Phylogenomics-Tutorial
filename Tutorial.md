@@ -4,10 +4,10 @@ By Iker Isarri and M. Eleonora Rossi
 
 ## Introduction
 
-In this repository you will find the data, the scripts and the instructions to run the tutorial of the phylogenomics session.
+In this repository you will find the data, the scripts and the instructions to run the phylogenomics tutorial.
 
 
-## What can you do with the content of this repository?
+### What can you do with the content of this repository?
 
 You can use the data and instructions provided in this repository to run a phylogenomic analyses from start to finsih. The data used from this tutorial are from [this paper](https://academic.oup.com/sysbio/article/65/6/1057/2281640?login=true).
 This is a toy dataset, and for time and computational constraints is much smaller than a normal phylogenomic dataset. Nevertheless the workflow provided here is complete to allowing you to design your firt phylogenomic project. 
