@@ -32,13 +32,19 @@ You can use the data and instructions provided in this repository to...
 
 ## Software links
 
-*Orthofinder
-*PREQUAL
-*MAFFT
-*MUSCLE
-*TrimAL
-*IQTREE2
-*Phylobayes
-*ASTRAL
-*FigTree
-*iTOL
+* Orthofinder (https://github.com/davidemms/OrthoFinder)
+* PREQUAL
+* MAFFT
+* MUSCLE
+* TrimAL
+* IQTREE2
+* Phylobayes
+* ASTRAL
+* FigTree
+* iTOL
+Orthofinder2 
+MAFFT https://mafft.cbrc.jp/alignment/software/source.html
+FASTCONCAT https://github.com/PatrickKueck/FASconCAT-G
+IQTREE2 http://www.iqtree.org/
+ASTRAL https://github.com/smirarab/ASTRAL
+FIGTree V1.4.4 https://github.com/rambaut/figtree/releases
