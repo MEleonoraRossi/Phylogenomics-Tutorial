@@ -26,8 +26,18 @@ Once unzipped we move inside the directory
 cd [name directoy]
 ```
 Let's have a look on what's inside by typing the command `ls` or `ll`
+In the folder `vertebrate_proteomes` you have 23 fasta files (extention .faa), these are your 23 species we are going to built the tree for. 
+You can check how one of the proteomes looks like by typing 
+```sh
+cat chicken.faa
+```
 
 ## Orthology inference
+First we will infer orthology. To do so we are going to use Orthofinder2. 
+You can check the helper for orthofinder by typing `orthofinder -h `
+```sh 
+orthofinder -os -M msa -S blast -f vertebrate_proteomes
+```
 
 
 
@@ -41,6 +51,7 @@ Let's have a look on what's inside by typing the command `ls` or `ll`
 
 By this point you should have performed all the steps necessary to remove paralogs, low quality sequences or species, and be pretty confident that the genes you have selected are trusty orthologs. 
 You should now have the genes ready to be concatenated in a super matrix. There are many tools that you can use for this step (e.g [concat_fasta.pl](https://github.com/santiagosnchez/concat_fasta) or [catsequences](https://github.com/ChrisCreevey/catsequences)), here we are going to use [FASTCONCAT](https://github.com/PatrickKueck/FASconCAT-G), it will read any format you have for your genes (e.g. Fasta, Phylip, Nexus)
+
 
 
 ```sh
@@ -64,5 +75,5 @@ perl /software/FASconCAT-G_v1.04.pl -l -s
 * IQTREE2 (http://www.iqtree.org/)
 * Phylobayes (https://github.com/bayesiancook/phylobayes/tree/master)
 * ASTRAL (https://github.com/smirarab/ASTRAL)
-* FIGTree V1.4.4 (https://github.com/rambaut/figtree/releases)
+* FIGTree V1.4.4 (https://github.com/rambaut/figtree/releases) 
 * iTOL (https://itol.embl.de/)
