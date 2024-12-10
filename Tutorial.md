@@ -31,14 +31,27 @@ You can check how one of the proteomes looks like by typing
 ```sh
 cat chicken.faa
 ```
+To return to the previous directory just type `cd ..`
+
 
 ## Orthology inference
 First we will infer orthology. To do so we are going to use Orthofinder2. 
-You can check the helper for orthofinder by typing `orthofinder -h `
+You can check the helper for orthofinder by typing `orthofinder -h`
+
+Now let's infer some orthologs. Type the following comand from the `PEB_Phylogenomics`.
+
 ```sh 
 orthofinder -os -M msa -S blast -f vertebrate_proteomes
 ```
+It will run for a couple of minutes, we don't have many species or sequences, but keep in mind that you data will highly influence the computational power you will need to run orthofinder to completion. 
 
+Once Orthofinder is finished let's check how many orthogroups we have found. Your orthogroups are in the folder `Orthogroups_Sequences`
+
+From the PEB_Phylogenomics directory go to the results directory:
+
+```sh
+cd /vertebrate_proteomes/OrthoFinder/Results_Dec17/Orthogroup_Sequences
+```
 
 
 ## EXTRA: Pre-alignment uality filtering
