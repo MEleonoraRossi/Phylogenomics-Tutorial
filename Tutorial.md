@@ -110,7 +110,7 @@ This is the command we used for phylobayes
 ```sh
 ```
 
-To run a coalescent analysis you can use ASTRAL. The input for ASTRAL are the single gene trees for 
+To run a coalescent analysis you can use ASTRAL. The input for ASTRAL are the single gene trees for each of the ortholouges we have infered. Astral assume that 
 
 
 
