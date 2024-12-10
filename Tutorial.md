@@ -94,27 +94,51 @@ Let's check the helper to see all the commands we are going to use
 ```sh
 iqtree2 --help
 ```
-As you can see there are lots of options, but to generate a sensible ML tree we just need to specify the matrix we want to use, the model selection option, and the bootstrap we want to use.
-
+As you can see there are lots of options. Here we will  provide the number of threads to use (`-nt 1`) input alignment (`-s`), tell IQTREE to select the best-fit evolutionary model with BIC (`-m TEST -merit BIC -msub nuclear`) and ask for branch support measures such as non-parametric bootstrapping and approximate likelihood ratio test (`-bb 1000 -alrt 1000 -bnni`)
 Let's generate our first tree
 ```sh
 iqtree -s FcC_supermatrix.fas -m TEST -msub nuclear -bb 1000 -alrt 1000 -nt 1 -bnni -pre unpartitioned
 ```
+You run your first tree!!
 
-## EXTRA: Bayesian Inferene and Coalescence methods with ASTRAL
+Now IQtree will generate several output file, your tree is in the `.treefile`. Check what are the other files to have an idea of their meaning. 
 
+
+## EXTRA: Bayesian Inference 
 The next step would be to run a Bayesian analysis using Phylobayes, however due to time constraints, we will provide you with the bayesian topology. Compare it with the ML one and check if you find any difference. 
 
 This is the command we used for phylobayes
 
 ```sh
 ```
+## Coalescence methods with ASTRAL
 
-To run a coalescent analysis you can use ASTRAL. The input for ASTRAL are the single gene trees for each of the ortholouges we have infered. Astral assume that 
+To run a coalescent analysis you can use ASTRAL. The input for ASTRAL are the single gene trees for each of the ortholouges we have infered. Astral assume that the gene trees are correct and not prone to errors, this is not always the case, nevertheless coalescent methods are useful tools to account for incomplete lineage sorting (ILS).
+Astral will infer a species tree from the individual gene trees. 
+Keep in mind: a gene tree follows the evolutionary history of the gene, and only orthologous genes have an evolutionary history similar to the species history since they evolve for speciation.
 
+Thus, before running ASTRAL, we will need to estimate individual gene trees. This can be easily done calling IQTREE in a for loop:
 
+```sh
+
+for f in *filtered.mafft.g08.fas; do iqtree -s $f -m TEST -msub nuclear -merit AICc -nt 1; done
+```
+
+Once all the gene trees are generated you need to put them in one single file.
+
+```sh
+cat *treefile > All_genetrees.tre
+```
+
+Now you can run ASTRAL
+```sh
+java -jar /srv/evop/resources/astral/ASTRAL/Astral/astral.5.7.3.jar -i my_gene_trees.tre -o species_tree_ASTRAL.tre 2> out.log
+```
+Excellent!! You just got your ML, Bayesian, and Coalescence trees. Now visualize them. Cna you spot any differences?
 
 ## Tree visualization
+
+For tree visualization there are different tools that you can use, such as [FigTree](https://github.com/rambaut/figtree/releases), [ITol](https://itol.embl.de/), [TreeViewer](https://treeviewer.org/) The most common is FigTree, but there are also several onlin
 
 ## Software links
 
