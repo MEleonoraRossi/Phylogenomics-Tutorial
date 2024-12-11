@@ -72,6 +72,13 @@ Can you count how many sequences you have in this file?
 
 ## EXTRA: Pre-alignment and quality filtering
 
+Often, transcriptomes and genomes have stretches of erroneous, non-homologous amino acids or nucleotides, produced by sequencing errors, assembly errors, or errors in genome annotation. But until recently, these type of errors had been mostly ignored because no automatic tool could deal with them.
+
+We will use [PREQUAL](https://academic.oup.com/bioinformatics/article/34/22/3929/5026659?login=true), a new software that takes sets of (homologous) unaligned sequences and identifies sequence stretches sharing no evidence of (residue) homology, which are then masked in the output. Note that homology can be invoked at the level of sequences as well as of residues (amino acids or nucleotides). Running PREQUAL for each set orthogroup is easy:
+```sh
+for f in *fa; do prequal $f ; done
+```
+The filtered (masked) alignments are in .filtered whereas .prequal contains relevant information such as the number of residues filtered.
 
 ## Multiple sequence alignment
 The next step is to infer multiple sequence alignments. Multiple sequence alignments allow us to know which amino acids/ nucleotides are homologous. A simple yet accurate tool is MAFFT.
@@ -91,12 +98,10 @@ Normally after the alignment and before the concatenation, we trim each individu
 If you want to run TrimAl:
 ```sh
 for a in *.mafft.fasta;
-
 	do trimal -in $a -out $a.trim  -fasta -gappyout;
-
 done
 ```
-[Here](https://trimal.readthedocs.io/en/latest/algorithms.html) you can check what the gappyout option does
+[Here](https://trimal.readthedocs.io/en/latest/algorithms.html) you can check what the gappyout option does.
 
 If you want to run BMGE:
 the `-g` flag allows you to remove alignment positions with > 80% gaps, you can decide which sides to exclude by changing the percentage of gaps you want to remove.
@@ -105,7 +110,6 @@ the `-g` flag allows you to remove alignment positions with > 80% gaps, you can 
 for f in *mafft.fasta; 
     do java -jar /software/BMGE.jar -i $f -t AA -g 0.8 -h 1 -w 1 -of $f.g08.fas;
  done
-
 ```
 
 ## Concatenate the alignments
