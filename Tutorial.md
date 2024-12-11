@@ -176,7 +176,9 @@ Excellent!! You just got your ML, Bayesian, and Coalescence trees. Now visualize
 
 ## Tree visualization
 
-For tree visualization there are different tools that you can use, such as [FigTree](https://github.com/rambaut/figtree/releases), [ITol](https://itol.embl.de/), [TreeViewer](https://treeviewer.org/) The most common is FigTree, but there are also several onlin
+For tree visualization there are different tools that you can use, such as [FigTree](https://github.com/rambaut/figtree/releases), [iTOL](https://itol.embl.de/), [TreeViewer](https://treeviewer.org/).
+You can upload your trees on iTOL or FigTree. 
+Trees need to be rooted with an outgroup. Click in the branch of Callorhinchus milii and the select "Tree Structure/Reroot the tree here". Branch support values can be shown under the "Advanced" menu. The tree can be modified in many other ways, and finally, a graphical tree can be exported. Similar options are available in FigTree.
 
 ## Software links
 
