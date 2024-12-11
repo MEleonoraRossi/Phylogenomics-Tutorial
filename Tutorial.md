@@ -96,7 +96,7 @@ for a in *.mafft.fasta;
 
 done
 ```
-[Here]https://trimal.readthedocs.io/en/latest/algorithms.html you can check what the gappyout option does
+[Here](https://trimal.readthedocs.io/en/latest/algorithms.html) you can check what the gappyout option does
 
 If you want to run BMGE:
 the `-g` flag allows you to remove alignment positions with > 80% gaps, you can decide which sides to exclude by changing the percentage of gaps you want to remove.
@@ -158,7 +158,7 @@ Thus, before running ASTRAL, we will need to estimate individual gene trees. Thi
 
 for f in *.mafft.fasta; 
     do iqtree -s $f -m TEST -msub nuclear -merit AICc -nt 1; 
-    done
+done
 ```
 
 Once all the gene trees are generated you need to put them in one single file.
