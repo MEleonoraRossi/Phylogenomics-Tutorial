@@ -40,7 +40,6 @@ What is the text that comes after the `>` sign?
 
 To return to the previous directory just type `cd ..` (This command moves you one directory back).
 
-
 ## Orthology inference
 
 We will infer the orhology with Orthofinder2. 
