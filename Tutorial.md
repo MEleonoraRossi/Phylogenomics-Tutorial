@@ -145,6 +145,17 @@ The next step would be to run a Bayesian analysis using Phylobayes, however due 
 This is the command we used for phylobayes
 
 ```sh
+#Chain 1
+pb_mpi  -d FcC_supermatrix.fas  -cat  -gtr  chain1
+
+#Chain2
+pb_mpi  -d  FcC_supermatrix.fas  -cat  -gtr  chain2
+
+#To check for convergence
+bpcomp -x burnin chain1  chain2
+
+#To get the parameters
+tracecomp -x burnin chain1  chain2
 ```
 ## Coalescence methods with ASTRAL
 
