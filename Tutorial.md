@@ -7,10 +7,12 @@ By Iker Isarri and M. Eleonora Rossi
 In this repository you will find data, scripts and instructions to run the phylogenomics tutorial.
 
 ### What can you do with the content of this repository?
-You can use the data and instructions provided in this repository to run a phylogenomic analyses from start to finsih. The data used from this tutorial are from [this paper](https://academic.oup.com/sysbio/article/65/6/1057/2281640?login=true).
-This is a toy dataset, and for time and computational constraints is much smaller than a normal phylogenomic dataset. Nevertheless the workflow provided here is complete to allowing you to design your firt phylogenomic project. 
+You can use the data and instructions provided in this repository to run a phylogenomic analyses from start to finsih. The data provided is from [this paper](https://academic.oup.com/sysbio/article/65/6/1057/2281640?login=true).
+This is a toy dataset, and due to time and computational constraints is much smaller than a normal phylogenomic dataset. Nevertheless the workflow provided here is complete, allowing you to have the basics to design your phylogenomic project in the future. 
 At the end of the tutorial there is a section provided with all the links for each software we are going to you use and more. 
-The extra sections provided are to give you an insight on what all the steps explained in this class comprehend.
+You won't need to run the  "extra" sections, we provided them to give you an insight on all the steps you should take to infer a phylogeny.
+
+Let's start!
 
 ## Data
 
@@ -20,16 +22,24 @@ git clone https://github.com/iirisarri/PEB_Phylogenomics.git
 ```
 or download it? (Zip file?)
 Once unzipped we move inside the directory 
+
 ```sh 
-cd [name directoy]
+#cd stands for change directory
+# cd [name directory]
+cd PEB_Phylogenomics
 ```
-Let's have a look on what's inside by typing the command `ls` or `ll`
+Let's have a look on what's inside by typing the command `ls` (list) or `ll`.
 In the folder `vertebrate_proteomes` you have 23 fasta files (extention .faa), these are your 23 species we are going to built the tree for. 
-You can check how one of the proteomes looks like by typing 
+You can check how one of the proteomes looks like by typing. Move into the `vertebrate_proteomes` directory with the cd command and then type: 
+
 ```sh
 less chicken.faa
 ```
-To return to the previous directory just type `cd ..`
+How does it look like? 
+What is the text that comes after the `>` sign?
+
+To return to the previous directory just type `cd ..` (This command moves you one directory back).
+
 
 ## Orthology inference
 
@@ -41,7 +51,8 @@ Now let's infer some orthologs. Type the following comand from the `PEB_Phylogen
 ```sh 
 orthofinder -os -M msa -S blast -f vertebrate_proteomes
 ```
-It will run for a couple of minutes, we don't have many species or sequences, but keep in mind that you data will highly influence the computational power you will need to run orthofinder to completion. 
+It will run for a couple of minutes, because we don't have many species or a high number of sequences. 
+Keep in mind that a normal phylogenomic dataset comprhend several proteomes with hundreds of sequences, which will highly influence the computational power and time needed to run orthofinder to completion. 
 
 Once Orthofinder is finished let's check how many orthogroups we have found. Your orthogroups are in the folder `Orthogroups_Sequences`
 
@@ -56,6 +67,7 @@ Go to the `Orthogroup_Sequences` directory and type
 ```sh
 less -S OG0000006.fa
 ```
+Can you count how many sequences you have in this file? 
 
 
 ## EXTRA: Pre-alignment and quality filtering
