@@ -69,7 +69,6 @@ less -S OG0000006.fa
 ```
 Can you count how many sequences you have in this file? 
 
-
 ## EXTRA: Pre-alignment and quality filtering
 
 Often, transcriptomes and genomes have stretches of erroneous, non-homologous amino acids or nucleotides, produced by sequencing errors, assembly errors, or errors in genome annotation. But until recently, these type of errors had been mostly ignored because no automatic tool could deal with them.
@@ -117,7 +116,6 @@ for f in *mafft.fasta;
 By this point you should have performed all the steps necessary to remove paralogs, low quality sequences or species, and be pretty confident that the genes you have selected are trusty orthologs. 
 You should now have the genes ready to be concatenated in a super matrix. There are many tools that you can use for this step (e.g [concat_fasta.pl](https://github.com/santiagosnchez/concat_fasta) or [catsequences](https://github.com/ChrisCreevey/catsequences)), here we are going to use [FASTCONCAT](https://github.com/PatrickKueck/FASconCAT-G), it will read any format you have for your genes (e.g. Fasta, Phylip, Nexus)
 
-
 ```sh
 perl /software/FASconCAT-G_v1.04.pl -l -s
 ```
@@ -141,7 +139,6 @@ iqtree -s FcC_supermatrix.fas -m TEST -msub nuclear -bb 1000 -alrt 1000 -nt 1 -b
 You run your first tree!!
 
 Now IQtree will generate several output file, your tree is in the `.treefile`. Check what are the other files to have an idea of their meaning. 
-
 
 ## EXTRA: Bayesian Inference 
 The next step would be to run a Bayesian analysis using Phylobayes, however due to time constraints, we will provide you with the bayesian topology. Compare it with the ML one and check if you find any difference. 
