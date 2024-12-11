@@ -79,10 +79,34 @@ The next step is to infer multiple sequence alignments. Multiple sequence alignm
 We will align gene files separately using a for loop:
 
 ```sh
-for f in *fa; do mafft $f > $f.mafft.fasta; done
+for f in *fa; 
+    do mafft $f > $f.mafft.fasta; 
+done
 ```
 
 ## EXTRA: Alignment trimming
+
+Normally after the alignment and before the concatenation, we trim each individual alignments. There are several tools for this, the most common ones are TrimAl and BMGE.
+
+If you want to run TrimAl:
+```sh
+for a in *.mafft.fasta;
+
+	do trimal -in $a -out $a.trim  -fasta -gappyout;
+
+done
+```
+[Here]https://trimal.readthedocs.io/en/latest/algorithms.html you can check what the gappyout option does
+
+If you want to run BMGE:
+the `-g` flag allows you to remove alignment positions with > 80% gaps, you can decide which sides to exclude by changing the percentage of gaps you want to remove.
+
+```sh
+for f in *mafft.fasta; 
+    do java -jar /software/BMGE.jar -i $f -t AA -g 0.8 -h 1 -w 1 -of $f.g08.fas;
+ done
+
+```
 
 ## Concatenate the alignments
 
@@ -93,7 +117,7 @@ You should now have the genes ready to be concatenated in a super matrix. There 
 ```sh
 perl /software/FASconCAT-G_v1.04.pl -l -s
 ```
-It will concatenated the genes in random order, at the end you will have a matrix composed of 23 taxa and 21 genes. 
+It will concatenated the genes in random order, at the end you will have a matrix composed of 23 taxa and 21 genes. The matrix is `FcC_supermatrix.fas`.
 You can visualize the matrix using [SeaView](https://doua.prabi.fr/software/seaview) 
 
 ## Tree inference : Maximum likelihood
@@ -104,8 +128,9 @@ Let's check the helper to see all the commands we are going to use
 ```sh
 iqtree2 --help
 ```
-As you can see there are lots of options. Here we will  provide the number of threads to use (`-nt 1`) input alignment (`-s`), tell IQTREE to select the best-fit evolutionary model with BIC (`-m TEST -merit BIC -msub nuclear`) and ask for branch support measures such as non-parametric bootstrapping and approximate likelihood ratio test (`-bb 1000 -alrt 1000 -bnni`)
-Let's generate our first tree
+As you can see there are lots of options. Here we will  provide the number of threads to use (`-nt 1`) input alignment (`-s`), tell IQTREE to select the best-fit evolutionary model with BIC (`-m TEST -merit BIC -msub nuclear`) and ask for branch support measures such as non-parametric bootstrapping and approximate likelihood ratio test (`-bb 1000 -alrt 1000 -bnni`).
+Let's generate our first tree!
+
 ```sh
 iqtree -s FcC_supermatrix.fas -m TEST -msub nuclear -bb 1000 -alrt 1000 -nt 1 -bnni -pre unpartitioned
 ```
@@ -131,7 +156,9 @@ Thus, before running ASTRAL, we will need to estimate individual gene trees. Thi
 
 ```sh
 
-for f in *filtered.mafft.g08.fas; do iqtree -s $f -m TEST -msub nuclear -merit AICc -nt 1; done
+for f in *.mafft.fasta; 
+    do iqtree -s $f -m TEST -msub nuclear -merit AICc -nt 1; 
+    done
 ```
 
 Once all the gene trees are generated you need to put them in one single file.
